@@ -213,12 +213,13 @@ class _MyBagRouteState extends State<MyBagRoute> {
                                               child: IconButton(
                                                 icon: const Icon(Icons.horizontal_rule),
                                                 onPressed: () {
-
-                                                  num unitPrice =(myItems[index]['price']/myItems[index]['productAmount']);
-                                                  myItems[index]['productAmount'] = myItems[index]['productAmount']-1;
-                                                  myItems[index]['price']=unitPrice*(myItems[index]['productAmount']);
-                                                  totalPrice=totalPrice-unitPrice;
-                                                  setState(() {});
+                                                  if(myItems[index]['productAmount']>0){
+                                                    num unitPrice =(myItems[index]['price']/myItems[index]['productAmount']);
+                                                    myItems[index]['productAmount'] = myItems[index]['productAmount']-1;
+                                                    myItems[index]['price']=unitPrice*(myItems[index]['productAmount']);
+                                                    totalPrice=totalPrice-unitPrice;
+                                                    setState(() {});
+                                                  }
                                                 },
                                                 iconSize: 20, // Adjust the icon size as needed
                                                 padding: EdgeInsets.zero, // Remove default padding
@@ -250,14 +251,17 @@ class _MyBagRouteState extends State<MyBagRoute> {
                                               child: IconButton(
                                                 icon: const Icon(Icons.add),
                                                 onPressed: () {
+
+
                                                   num unitPrice =(myItems[index]['price']/myItems[index]['productAmount']);
                                                   myItems[index]['productAmount'] = myItems[index]['productAmount']+1;
                                                   myItems[index]['price']=unitPrice*(myItems[index]['productAmount']);
                                                   totalPrice=totalPrice+unitPrice;
+                                                  setState(() {});
                                                   if(myItems[index]['productAmount'] == 5){
                                                     productFull(context, myItems[index]['title']);
                                                   }
-                                                  setState(() {});
+
                                                 },
                                                 iconSize: 20, // Adjust the icon size as needed
                                                 padding: EdgeInsets.zero, // Remove default padding

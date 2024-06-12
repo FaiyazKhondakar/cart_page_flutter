@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       initialRoute: '/myBag',
       routes: {
-        '/myBag' :(context)=>MyBagRoute(),
+        '/myBag' :(context)=>const MyBagRoute(),
 
       },
       theme: ThemeData(
@@ -38,9 +38,6 @@ class MyApp extends StatelessWidget{
       ),
     );
   }
-
 }
-
-
 
 
